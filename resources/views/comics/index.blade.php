@@ -5,6 +5,7 @@
         <h1>
             Lista Comics
         </h1>
+        <a href="{{route('comics.create')}}">Crea un nuovo fumetto</a>
 
         <table class="table">
             <thead>
@@ -22,6 +23,9 @@
                         <td>{{ $comic->title }}</td>
                         <td>{{ $comic->description }}</td>
                         <td>{{ $comic->price }}</td>
+                        <td>
+                            <a href="{{route('comics.show', ['comic' => $comic->id])}}">Dettagli</a>
+                        </td>
                     </tr>
                     
                 @endforeach

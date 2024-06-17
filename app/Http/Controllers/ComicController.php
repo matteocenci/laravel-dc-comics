@@ -37,14 +37,16 @@ class ComicController extends Controller
         $comic = new Comic();
         $comic->fill($data);
         $comic->save();
+
+        return redirect()->route("comics.show", ["comics"=>$comic->id]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Comic $comic)
     {
-        //
+        return view('comics.show', compact('comic'));
     }
 
     /**
@@ -68,6 +70,7 @@ class ComicController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }
